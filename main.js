@@ -13,7 +13,7 @@ function createWindow() {
     frame: true,
     center: true,
     minimizable: false,
-    maximizable: true
+    maximizable: false
   })
 
   // 然后加载应用的 index.html。
