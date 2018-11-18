@@ -1,11 +1,15 @@
 {
-    "name": "hello",
-    "version": "0.0.1",
-    "main": "main.js",
-    "scripts": {
-        "start": "electron ."
-    },
-    "devDependencies": {
-        "electron": "~3.0.9"
-    }
+  "name": "hello",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "~3.0.9"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "jquery": "^3.3.1"
+  }
 }

@@ -27,7 +27,7 @@ electron -v // 得到 v3.0.9
 ```
 5. 执行命令
  ```
-    electron-packager . 'HelloWorld' --platform=win32 --arch=x64 --icon=icon.ico --out=./out --asar --app-version=0.0.1
+    electron-packager . 'HelloWorld' --platform=win32 --arch=x64  --out=./out --asar --app-version=0.0.1 --icon=icon.ico
  ```
 
  得到的exe文件包比较大，后续要研究如何压缩
