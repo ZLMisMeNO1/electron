@@ -3,6 +3,9 @@ const { dialog } = remote;
 const channelEnum = require('../../../constant');
 const $ = require('jquery');
 const crypto = require('crypto');
+
+
+
 window.onload = () => {
 
     let btnCommit = document.getElementById('btnCommit');

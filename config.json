@@ -2,7 +2,7 @@
 {
     "db":{
         "database":"shiroweb",
-        "host":"192.168.199.175",
+        "host":"localhost",
         "user":"root",
         "password":"root",
         "port":"3306"

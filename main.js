@@ -2,8 +2,8 @@ const { app, BrowserWindow, ipcMain, Menu } = require('electron')
 const channelEnum = require('./constant');
 const loginUtil = require('./app/util/login/login');
 const indexUtil = require('./app/util/index/index');
-let win
 
+let win
 function createWindow() {
   // 创建浏览器窗口。
   win = new BrowserWindow({
@@ -42,12 +42,12 @@ ipcMain.on(channelEnum.loginChannel, (event, arg) => {
 async function usernamePasswordLogin(event, arg) {
   const flag = await loginUtil.login(arg);
   // console.log('flag', flag)
-  // if (flag) {
-  //   indexUtil.createIndexWindow();
-  //   win.close();
-  // } else {
-  //   event.sender.send(channelEnum.loginResultChannel, 'error');
-  // }
+  if (flag) {
+    indexUtil.createIndexWindow();
+    win.close();
+  } else {
+    event.sender.send(channelEnum.loginResultChannel, 'error');
+  }
 }
 // Electron 会在初始化后并准备
 // 创建浏览器窗口时，调用这个函数。
