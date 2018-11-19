@@ -2,25 +2,23 @@ const { app, BrowserWindow, ipcMain, Menu } = require('electron')
 const channelEnum = require('./constant');
 const loginUtil = require('./app/util/login/login');
 const indexUtil = require('./app/util/index/index');
-
 let win
 
 function createWindow() {
   // 创建浏览器窗口。
   win = new BrowserWindow({
-    width: 476,
-    height: 370,
+    width: 880,
+    height: 666,
     frame: true,
     center: true,
     minimizable: false,
     maximizable: false
   })
-
   // 然后加载应用的 index.html。
   win.loadFile('./app/page/login/login.html')
   Menu.setApplicationMenu(null);
   // 打开开发者工具
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
   // 当 window 被关闭，这个事件会被触发。
   win.on('closed', () => {
     // 取消引用 window 对象，如果你的应用支持多窗口的话，
@@ -37,13 +35,20 @@ function createWindow() {
 //判断登录是否成功，成功后关闭登录窗口，转入首页
 ipcMain.on(channelEnum.loginChannel, (event, arg) => {
 
-  if (loginUtil.login(arg)) {
-    indexUtil.createIndexWindow();
-    win.close();
-  } else {
-    event.sender.send(channelEnum.loginResultChannel, 'error');
-  }
+  usernamePasswordLogin(event, arg)
+
 });
+//用户名和密码登录
+async function usernamePasswordLogin(event, arg) {
+  const flag = await loginUtil.login(arg);
+  // console.log('flag', flag)
+  // if (flag) {
+  //   indexUtil.createIndexWindow();
+  //   win.close();
+  // } else {
+  //   event.sender.send(channelEnum.loginResultChannel, 'error');
+  // }
+}
 // Electron 会在初始化后并准备
 // 创建浏览器窗口时，调用这个函数。
 // 部分 API 在 ready 事件触发后才能使用。
