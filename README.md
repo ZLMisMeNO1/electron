@@ -1,6 +1,7 @@
 
 # electron 脚手架
 
+> 看到electron不能用MySQL数据库的时候，我的心都碎了
 
 ## 打包成exe方法
 
